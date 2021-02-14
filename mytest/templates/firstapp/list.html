@@ -1,11 +1,28 @@
 {% extends 'firstapp/main.html' %}
 
 {% block main_data %}
-	<h2>Мои записи</h2>
+    <br>
+	<h2 align="center">Мои записи</h2>
+    <br>
 	{% if point %}
-	    {% for zapis in point %}
-            <p>{{zapis}}</p>
-		{% endfor %}
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for zapis in point %}
+                    <tr>
+                        <td>{{zapis.str}}</td>
+                        <td>{{zapis.description}}</td>
+                        <td>{{zapis.date}}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
 	{% else %}
 		<p>У вас нет записей</p>
 	{% endif %}

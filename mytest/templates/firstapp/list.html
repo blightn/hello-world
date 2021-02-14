@@ -1,0 +1,12 @@
+{% extends 'firstapp/main.html' %}
+
+{% block main_data %}
+	<h2>Мои записи</h2>
+	{% if point %}
+	    {% for zapis in point %}
+            <p>{{zapis}}</p>
+		{% endfor %}
+	{% else %}
+		<p>У вас нет записей</p>
+	{% endif %}
+{% endblock %}

@@ -1,5 +1,5 @@
 .table {
-	width: 50%;
+	width: 60%;
 	margin-bottom: 20px;
 	border: 5px solid #fff;
 	border-top: 5px solid #fff;
@@ -9,6 +9,7 @@
 	font-size: 15px;
 	background: #fff!important;
     margin: auto;
+	table-layout: fixed;
 }
 .table th {
 	font-weight: bold;
@@ -39,6 +40,15 @@
 
 	border-right: none;
 
+}
+thead th:nth-child(1) {
+	width: 20%;
+}
+thead th:nth-child(2) {
+	width: 65%;
+}
+thead th:nth-child(3) {
+	width: 15%;
 }
 .table tbody tr:nth-child(even){
 	background: #f8f8f8!important;

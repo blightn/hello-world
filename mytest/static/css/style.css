@@ -53,3 +53,51 @@ thead th:nth-child(3) {
 .table tbody tr:nth-child(even){
 	background: #f8f8f8!important;
 }
+
+
+
+.container {
+    margin: 50px auto;
+    width: 50%;
+    max-width: 500px;
+}
+
+.container ul {
+    margin: 50px 0;
+    list-style: none;
+}
+
+.button-1 {
+    color: #766AD0;
+    border: 1px solid #3A374C;
+    position: relative;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 700;
+    white-space: nowrap;
+    padding: 15px 30px;
+    transition: .3s linear;
+}
+
+.button-1:before, .button-1:after, .link-content:before, .link-content:after {
+    content: "";
+    position: absolute;
+    z-index: 1;
+    width: 15px;
+    height: 15px;
+    transition: .3s linear;
+}
+
+.button-1:before {
+    left: -1px;
+    top: -1px;
+    border-left: 1px solid #614DFF;
+    border-top: 1px solid #614DFF;
+}
+
+.button-1:after {
+    bottom: -1px;
+    right: -1px;
+    border-bottom: 1px solid #614DFF;
+    border-right: 1px solid #614DFF;
+}

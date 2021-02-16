@@ -1,22 +1,25 @@
 {% extends 'firstapp/main.html' %}
 
 {% block main_data %}
+<div class="container">
     <br>
 	<h2 align="center">Мои записи</h2>
     <br>
 	{% if point %}
-        <table class="table">
+        <table class="table table-hover">
             <thead>
                 <tr>
-                    <th>Title</th>
-                    <th>Description</th>
-                    <th>Date</th>
+                    <th scope="col">#</th>
+                    <th scope="col">Заголовок</th>
+                    <th scope="col">Описание</th>
+                    <th scope="col">Дата</th>
                 </tr>
             </thead>
             <tbody>
                 {% for zapis in point %}
                     <tr>
-                        <td>{{zapis.str}}</td>
+                        <th scope="row">{{zapis.id}}</th>
+                        <td>{{zapis.title}}</td>
                         <td>{{zapis.description}}</td>
                         <td>{{zapis.date}}</td>
                     </tr>
@@ -30,4 +33,5 @@
     <div align="center">
         <button class="btn btn-primary" onclick="window.location='../create';">Добавить запись</button>
     </div>
+</div>
 {% endblock %}

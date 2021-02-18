@@ -6,10 +6,10 @@ from .models import FirstApp
 
 
 class FirstAppAdmin(admin.ModelAdmin):
-    """ Simple comment """
+    """ Записи """
 
     model = FirstApp
-    list_display = ('title', 'description', 'date') # list_display -> это кортедж отличается неизменяемостью данных например от list [ ... , ... ]
+    list_display = ('title', 'description', 'date')
 
 
 admin.site.register(FirstApp, FirstAppAdmin)

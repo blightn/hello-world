@@ -5,23 +5,29 @@
     <br>
 	<h2 align="center">Мои записи</h2>
     <br>
-	{% if point %}
+	{% if context %}
         <table class="table table-hover">
             <thead>
                 <tr>
                     <th scope="col">#</th>
                     <th scope="col">Заголовок</th>
                     <th scope="col">Описание</th>
-                    <th scope="col">Дата</th>
+                    <th scope="col">Дата создания</th>
+                    <th scope="col"></th>
                 </tr>
             </thead>
             <tbody>
-                {% for zapis in point %}
+                {% for row in context %}
                     <tr>
-                        <th scope="row">{{zapis.id}}</th>
-                        <td>{{zapis.title}}</td>
-                        <td>{{zapis.description}}</td>
-                        <td>{{zapis.date}}</td>
+                        <th scope="row">{{row.id}}</th>
+                        <td>{{row.title}}</td>
+                        <td>{{row.description}}</td>
+                        <td>{{row.date}}</td>
+                        <td>
+                            <form action="{% url 'firstapp:edit' pk=row.pk %}">
+                                <button type="submit" class="btn btn-link" data-mdb-ripple-color="dark">Изменить запись</button>
+                            </form>
+                        </td>
                     </tr>
                 {% endfor %}
             </tbody>
@@ -33,5 +39,7 @@
     <div align="center">
         <button class="btn btn-primary" onclick="window.location='../create';">Добавить запись</button>
     </div>
+    <br>
+    <br>
 </div>
 {% endblock %}

@@ -1,0 +1,26 @@
+{% extends 'firstapp/main.html' %}
+
+{% block main_data %}
+<div class="container">
+    <br>
+	<h2 align="center">Детали записи</h2>
+    <br>
+    <div class="mb-3">
+        <label class="form-label">Запись #{{ context.id }}</label>
+        <label class="form-label">Заголовок: {{ context.title }}</label>
+        <label class="form-label">Описание: {{ context.description }}</label>
+        <label class="form-label">Дата создания: {{ context.date }}</label>
+    </div>
+    <div class="mb-3" align="center">
+        <button class="btn btn-primary" onclick="window.location='../create';">Добавить запись</button>
+        <form action="{% url 'firstapp:edit' pk=context.pk %}">
+            <button class="btn btn-primary" data-mdb-ripple-color="dark" type="submit">Изменить запись</button>
+        </form>
+        <form action="{% url 'firstapp:delete' pk=context.pk %}">
+            <button class="btn btn-primary" data-mdb-ripple-color="dark" type="submit">Удалить запись</button>
+        </form>
+    </div>
+    <br>
+    <br>
+</div>
+{% endblock %}

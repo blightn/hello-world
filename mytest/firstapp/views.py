@@ -1,20 +1,13 @@
 from django.shortcuts import render
 
-from django.views.generic import ListView
-from .models import FirstApp
-
-from django.views.generic.edit import UpdateView, CreateView, DeleteView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .forms import FirstAppForm
 from django.urls import reverse_lazy
 
+from django.views.generic import ListView, DetailView
+from .models import FirstApp
+
 # Create your views here.
-
-class FirstAppListView(ListView):
-    """ Просмотр записей """
-
-    model = FirstApp
-    template_name = 'firstapp/list.html'
-    context_object_name = 'context'
 
 class FirstAppCreateView(CreateView):
     """ Создание записи """
@@ -36,6 +29,13 @@ class FirstAppCreateView(CreateView):
         context['action'] = 'Добавить запись'
         return context
 
+class FirstAppListView(ListView):
+    """ Просмотр записей """
+
+    model = FirstApp
+    template_name = 'firstapp/list.html'
+    context_object_name = 'context'
+
 class FirstAppUpdateView(UpdateView):
     """ Изменение записи """
     model = FirstApp
@@ -48,3 +48,20 @@ class FirstAppUpdateView(UpdateView):
         context = super().get_context_data()
         context['action'] = 'Изменить запись'
         return context
+
+class FirstAppDeleteView(DeleteView):
+    """ Удаление записи """
+    model = FirstApp
+    success_url = reverse_lazy('firstapp:list')
+    template_name = 'firstapp/delete.html'
+    context_object_name = 'context'
+    form_class = FirstAppForm
+    #fields = '__all__'
+
+class FirstAppDetailView(DetailView):
+    """ Просмотр деталей записи """
+    model = FirstApp
+    template_name = 'firstapp/details.html'
+    context_object_name = 'context'
+    form_class = FirstAppForm
+    #fields = '__all__'

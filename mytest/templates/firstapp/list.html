@@ -14,6 +14,8 @@
                     <th scope="col">Описание</th>
                     <th scope="col">Дата создания</th>
                     <th scope="col"></th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
                 </tr>
             </thead>
             <tbody>
@@ -26,6 +28,16 @@
                         <td>
                             <form action="{% url 'firstapp:edit' pk=row.pk %}">
                                 <button type="submit" class="btn btn-link" data-mdb-ripple-color="dark">Изменить запись</button>
+                            </form>
+                        </td>
+                        <td>
+                            <form action="{% url 'firstapp:details' pk=row.pk %}">
+                                <button type="submit" class="btn btn-link" data-mdb-ripple-color="dark">Детали</button>
+                            </form>
+                        </td>
+                        <td>
+                            <form action="{% url 'firstapp:delete' pk=row.pk %}">
+                                <button type="submit" class="btn btn-link" data-mdb-ripple-color="dark">Удалить запись</button>
                             </form>
                         </td>
                     </tr>

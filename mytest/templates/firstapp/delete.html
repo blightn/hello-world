@@ -1,0 +1,15 @@
+{% extends 'firstapp/main.html' %}
+
+{% block main_data %}
+<div class="container" align="center">
+    <br>
+	<h2>Удалить запись</h2>
+    <br>
+    <p>Вы действительно хотите удалить запись "{{ context.title }}"?</p>
+    <br>
+    <form action="" method="post">
+        {% csrf_token %}
+        <button class="btn btn-primary" type="submit">Удалить запись</button>
+    </form>
+</div>
+{% endblock %}

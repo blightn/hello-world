@@ -7,9 +7,7 @@
     <br>
     <form action="" method="post">
         {% csrf_token %}
-        
         <!--{{ form.as_p }}-->
-
         <div class="mb-3">
             <label class="form-label">{{ form.title.label }}:</label>
             <input class="form-control form-control-lg mb-2" id="id_{{ form.title.name }}" name="{{ form.title.name }}" type="text" placeholder="{{ form.title.label }}"
@@ -19,7 +17,6 @@
             <textarea class="form-control" id="id_{{ form.description.name }}" name="{{ form.description.name }}" rows="3" placeholder="{{ form.description.label }}"
                 required="required" maxlength="250">{% if form.description.value %}{{ form.description.value }}{% endif %}</textarea>
         </div>
-        
         <div class="submit-row">
             <button class="btn btn-primary" type="submit">{{ action }}</button>
         </div>

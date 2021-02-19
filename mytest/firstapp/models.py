@@ -3,7 +3,7 @@ from django.db import models
 # Create your models here.
 
 class FirstApp(models.Model):
-    """ Модель записей """
+    """ Модель записи """
     
     title = models.CharField('Заголовок', max_length=50)
     description = models.CharField('Описание', max_length=250)

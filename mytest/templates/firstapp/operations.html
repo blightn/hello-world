@@ -8,19 +8,20 @@
     <form action="" method="post">
         {% csrf_token %}
         
+        <!--{{ form.as_p }}-->
+
         <div class="mb-3">
             <label class="form-label">{{ form.title.label }}:</label>
-            <input type="text" class="form-control" id="FormControlInput1" name="{{ form.title.name }}" required="required" maxlength="50" value="{{context.title}}">
-        </div>
-        <div class="mb-3">
+            <input class="form-control form-control-lg mb-2" id="id_{{ form.title.name }}" name="{{ form.title.name }}" type="text" placeholder="{{ form.title.label }}"
+                required="required" maxlength="50" {% if form.title.value %} value="{{ form.title.value }}" {% endif %}>
+
             <label class="form-label">{{ form.description.label }}:</label>
-            <textarea class="form-control" id="FormControlTextarea1" rows="3" name="{{ form.description.name }}" required="required" maxlength="250">{{context.description}}</textarea>
-          </div>
-        
-        <!--{{ form.as_p }}-->
+            <textarea class="form-control" id="id_{{ form.description.name }}" name="{{ form.description.name }}" rows="3" placeholder="{{ form.description.label }}"
+                required="required" maxlength="250">{% if form.description.value %}{{ form.description.value }}{% endif %}</textarea>
+        </div>
         
         <div class="submit-row">
-            <button type="submit" class="btn btn-primary">{{ action }}</button>
+            <button class="btn btn-primary" type="submit">{{ action }}</button>
         </div>
     </form>
 </div>

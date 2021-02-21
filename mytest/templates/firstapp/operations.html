@@ -14,7 +14,7 @@
                 required="required" maxlength="50" {% if form.title.value %} value="{{ form.title.value }}" {% endif %}>
 
             <label class="form-label">{{ form.description.label }}:</label>
-            <textarea class="form-control" id="id_{{ form.description.name }}" name="{{ form.description.name }}" rows="3" placeholder="{{ form.description.label }}"
+            <textarea class="form-control" id="id_{{ form.description.name }}" name="{{ form.description.name }}" rows="5" placeholder="{{ form.description.label }}"
                 required="required" maxlength="250">{% if form.description.value %}{{ form.description.value }}{% endif %}</textarea>
         </div>
         <div class="submit-row">

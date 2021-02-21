@@ -1,9 +1,13 @@
 {% extends 'firstapp/main.html' %}
 
 {% block main_data %}
-<div class="container">
+<div class="container" align="center">
     <br>
-	<h2 align="center">Мои записи</h2>
+	<h2>Мои записи</h2>
+    <br>
+    <div>
+        <button class="btn btn-primary" onclick="window.location='../create';">Добавить запись</button>
+    </div>
     <br>
 	{% if context %}
         <table class="table table-hover">
@@ -26,32 +30,55 @@
                         <td>{{row.description}}</td>
                         <td>{{row.date}}</td>
                         <td>
-                            <form action="{% url 'firstapp:edit' pk=row.pk %}">
-                                <button type="submit" class="btn btn-link" data-mdb-ripple-color="dark">Изменить запись</button>
-                            </form>
-                        </td>
-                        <td>
                             <form action="{% url 'firstapp:details' pk=row.pk %}">
                                 <button type="submit" class="btn btn-link" data-mdb-ripple-color="dark">Детали</button>
                             </form>
                         </td>
                         <td>
+                            <form action="{% url 'firstapp:edit' pk=row.pk %}">
+                                <button type="submit" class="btn btn-link" data-mdb-ripple-color="dark">Изменить</button>
+                            </form>
+                        </td>
+                        <td>
                             <form action="{% url 'firstapp:delete' pk=row.pk %}">
-                                <button type="submit" class="btn btn-link" data-mdb-ripple-color="dark">Удалить запись</button>
+                                <button type="submit" class="btn btn-link" data-mdb-ripple-color="dark">Удалить</button>
                             </form>
                         </td>
                     </tr>
                 {% endfor %}
             </tbody>
         </table>
+        <nav aria-label="Список записей">
+            <ul class="pagination justify-content-center">
+                {% if page_obj.has_previous %}
+                    <li class="page-item"><a class="page-link" href="?page=1">Первая</a></li>
+                    <li class="page-item"><a class="page-link" href="?page={{ page_obj.previous_page_number }}">&laquo;</a></li>
+                {% endif %}
+                <li class="page-item"><a class="page-link" href="?page={{ page_obj.number }}">{{ page_obj.number }}</a></li>
+                <!--
+                {% if page_obj.paginator.num_pages > 10 %}
+                    <li class="page-item"><a class="page-link" href="?page={{ page_obj.number }}">{{ page_obj.number }}</a></li>
+                {% endif %}
+                {% if page_obj.paginator.num_pages > 20 %}
+                    <li class="page-item"><a class="page-link" href="?page={{ page_obj.number }}">{{ page_obj.number }}</a></li>
+                {% endif %}
+                -->
+                {% if page_obj.has_next %}
+                    <li class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number }}">&raquo;</a></li>
+                    <li class="page-item"><a class="page-link" href="?page={{ page_obj.paginator.num_pages }}">Последняя</a></li>
+                {% endif %}
+            </ul>
+        </nav>
 	{% else %}
-		<p>У вас нет записей</p>
+        <p>У вас нет записей</p>
 	{% endif %}
+
+    <!--
     <br>
-    <div align="center">
-        <button class="btn btn-primary" onclick="window.location='../create';">Добавить запись</button>
-    </div>
-    <br>
+    {% for test in page_obj %}
+        {{test.title}}<br>
+    {% endfor %}
+    -->
     <br>
 </div>
 {% endblock %}

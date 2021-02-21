@@ -35,6 +35,7 @@ class FirstAppListView(ListView):
     model = FirstApp
     template_name = 'firstapp/list.html'
     context_object_name = 'context'
+    paginate_by = 15
 
 class FirstAppUpdateView(UpdateView):
     """ Изменение записи """

@@ -1,4 +1,4 @@
-{% extends 'users/main.html' %}
+{% extends 'main.html' %}
 
 {% block main_data %}
 <div class="card" align="center">
@@ -13,6 +13,7 @@
             {{ form }}
             
             <button type="submit" class="btn btn-primary btn-block">Войти</button>
+            <a href="{% url 'users:password_reset' %}">Забыли пароль?</a>
         </form>
     </div>
 </div>

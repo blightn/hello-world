@@ -1,9 +1,9 @@
-{% extends 'users/main.html' %}
+{% extends 'main.html' %}
 
 {% block main_data %}
 <div class="container" align="center">
     <br>
     <p>Вы вышли из аккаунта.</p>
-    <a  href="{% url 'users:login' %}">Войти еще раз</a>
+    <a href="{% url 'users:login' %}">Войти еще раз</a>
 </div>
 {% endblock %}

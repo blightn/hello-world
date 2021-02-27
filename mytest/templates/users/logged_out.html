@@ -1,8 +1,18 @@
 {% extends 'main.html' %}
 
+{% block title %}Выход{% endblock %}
+
 {% block main_data %}
 <div class="container" align="center">
     <br>
+    <!--
+    {% if user.is_authenticated %}
+        <p>Вы вышли из аккаунта.</p>
+        <a href="{% url 'users:login' %}">Войти еще раз</a>
+    {% else %}
+        <p>Необходимо сначала <a href="{% url 'users:login' %}">войти</a>.</p>
+    {% endif %}
+    -->
     <p>Вы вышли из аккаунта.</p>
     <a href="{% url 'users:login' %}">Войти еще раз</a>
 </div>

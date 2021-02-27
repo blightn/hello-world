@@ -1,5 +1,7 @@
 {% extends 'main.html' %}
 
+{% block title %}Мои записи{% endblock %}
+
 {% block main_data %}
 <div class="container" align="center">
     <br>
@@ -26,8 +28,8 @@
                 {% for row in context %}
                     <tr>
                         <th scope="row">{{row.id}}</th>
-                        <td>{{row.title}}</td>
-                        <td>{{row.description}}</td>
+                        <td>{{row.title|truncatechars:20}}</td>
+                        <td>{{row.description|truncatechars:35}}</td>
                         <td>{{row.date}}</td>
                         <td>
                             <form action="{% url 'firstapp:details' pk=row.pk %}">

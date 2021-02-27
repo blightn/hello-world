@@ -156,4 +156,8 @@ STATICFILES_DIRS = [
     BASE_DIR / 'static'
 ]
 
+# Redirect to home URL after login (Default redirects to /accounts/profile/)
 LOGIN_REDIRECT_URL =  '/list/'
+
+EMAIL_HOST = "localhost"
+EMAIL_PORT = 1025

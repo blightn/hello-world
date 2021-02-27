@@ -1,10 +1,16 @@
 {% extends 'main.html' %}
 
+{% block title %}Вход{% endblock %}
+
 {% block main_data %}
 <div class="card" align="center">
     <div class="card-body">
+        {% if user.is_authenticated %}
+            <p>Вы уже вошли как <b>{{ user.username }}</b>.</p>
+        {% else %}
         <h2 class="card-title">Войти в аккаунт</h2>
         <br>
+        <p>Если у Вас нет аккаунта, Вы можете <a href="{% url 'users:register' %}">зарегистрироваться</a></p>
         <form method="post">
             {% csrf_token %}
             <input type="hidden" name="next" value="{{ next }}">
@@ -15,6 +21,7 @@
             <button type="submit" class="btn btn-primary btn-block">Войти</button>
             <a href="{% url 'users:password_reset' %}">Забыли пароль?</a>
         </form>
+        {% endif %}
     </div>
 </div>
 {% endblock %}

@@ -1,0 +1,10 @@
+{% load i18n %}{% autoescape off %}
+
+Здравствуйте, {{ user.username }}.
+
+Пожалуйста, перейдите по ссылке ниже для завершения регистрации:
+http://{{ domain }}{% url 'users:activate' uidb64=uid token=token %}
+
+{% blocktranslate %}The {{ site_name }} team{% endblocktranslate %}
+
+{% endautoescape %}

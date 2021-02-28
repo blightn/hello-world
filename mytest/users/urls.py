@@ -1,12 +1,11 @@
 from django.urls import path
 from django.contrib.auth import views
 from django.urls import reverse_lazy
-from .views import register, activate#, register_done
+from .views import register, activate
 
 
 app_name = 'users'
 
-# Расположить файлы и остальное в следующем порядке:
 urlpatterns = [
   path('login/', views.LoginView.as_view(template_name='users/login.html'), name='login'),
   path('logout/', views.LogoutView.as_view(template_name='users/logged_out.html'), name='logout'),

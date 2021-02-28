@@ -159,5 +159,18 @@ STATICFILES_DIRS = [
 # Redirect to home URL after login (Default redirects to /accounts/profile/)
 LOGIN_REDIRECT_URL =  '/list/'
 
+# Для "python -m smtpd -n -c DebuggingServer localhost:1025" (venv):
 EMAIL_HOST = "localhost"
 EMAIL_PORT = 1025
+
+# Для ящика на yandex:
+"""
+DEFAULT_FROM_EMAIL = 'USERNAME@yandex.ru'
+
+EMAIL_HOST = "smtp.yandex.ru"
+EMAIL_PORT = 465
+EMAIL_USE_SSL = True
+
+EMAIL_HOST_USER = 'USERNAME'
+EMAIL_HOST_PASSWORD = 'PASSWORD'
+"""

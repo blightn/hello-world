@@ -15,28 +15,6 @@ from .forms import UserRegistrationForm
 from mytest.tokens import account_activation_token
 
 
-def register_OLD(request):
-    if request.method == 'POST':
-        form = UserRegistrationForm(request.POST)
-        if form.is_valid():
-            #new_user = form.save()
-            form.save()
-
-            """
-            username = form.cleaned_data.get('username')
-            raw_password = form.cleaned_data.get('password1')
-            user = authenticate(username=username, password=raw_password)
-            login(request, user)
-            return redirect(reverse_lazy('firstapp:list'))
-            """
-
-            #return render(request, 'users/register_done.html', {'new_user': new_user})
-            return redirect(reverse_lazy('users:register_done'))
-    else:
-        form = UserRegistrationForm()
-        
-    return render(request, 'users/register.html', {'form': form})
-
 def register(request):
     if request.method == 'POST':
         form = UserRegistrationForm(request.POST)
@@ -46,7 +24,7 @@ def register(request):
             user.save()
 
             current_site = get_current_site(request)
-            subject = 'Activate Your MySite Account'
+            subject = 'Активируйте свой аккаунт'
             message = render_to_string('users/account_activation_email.html', {
                 'user': user,
                 'domain': current_site.domain,

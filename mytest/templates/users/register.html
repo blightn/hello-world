@@ -11,6 +11,8 @@
             <h2 class="card-title">Создать аккаунт</h2>
             <br>
             <a>Заполните форму ниже:</a>
+            <br>
+            <br>
             <form action="." method="post">
                 {% csrf_token %}
                 
@@ -32,7 +34,10 @@
                 {% endfor %}
                 -->
                 
+                <br>
+                <br>
                 <button type="submit" class="btn btn-primary btn-block">Зарегистрироваться</button>
+                <br>
                 <a href="{% url 'users:login' %}">Вернуться на страницу входа</a>
             </form>
         {% endif %}

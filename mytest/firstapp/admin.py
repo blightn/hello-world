@@ -2,14 +2,14 @@ from django.contrib import admin
 
 # Register your models here.
 
-from .models import FirstApp
+from .models import Note
 
 
 class FirstAppAdmin(admin.ModelAdmin):
-    """ Записи """
+    # Записки
 
-    model = FirstApp
-    list_display = ('title', 'description', 'date')
+    model = Note
+    list_display = ('author', 'title', 'text', 'creation_date', 'modify_date')
 
 
-admin.site.register(FirstApp, FirstAppAdmin)
+admin.site.register(Note, FirstAppAdmin)

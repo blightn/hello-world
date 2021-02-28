@@ -1,14 +1,14 @@
 {% extends 'main.html' %}
 
-{% block title %}Мои записи{% endblock %}
+{% block title %}Мои записки{% endblock %}
 
 {% block main_data %}
 <div class="container" align="center">
     <br>
-	<h2>Мои записи</h2>
+	<h2>Мои записки</h2>
     <br>
     <div>
-        <button class="btn btn-primary" onclick="window.location='../create';">Добавить запись</button>
+        <button class="btn btn-primary" onclick="window.location='../create';">Добавить записку</button>
     </div>
     <br>
 	{% if context %}
@@ -19,6 +19,7 @@
                     <th scope="col">Заголовок</th>
                     <th scope="col">Описание</th>
                     <th scope="col">Дата создания</th>
+                    <th scope="col">Дата изменения</th>
                     <th scope="col"></th>
                     <th scope="col"></th>
                     <th scope="col"></th>
@@ -29,8 +30,9 @@
                     <tr>
                         <th scope="row">{{row.id}}</th>
                         <td>{{row.title|truncatechars:20}}</td>
-                        <td>{{row.description|truncatechars:35}}</td>
-                        <td>{{row.date}}</td>
+                        <td>{{row.text|truncatechars:35}}</td>
+                        <td>{{row.creation_date}}</td>
+                        <td>{{row.modify_date}}</td>
                         <td>
                             <form action="{% url 'firstapp:details' pk=row.pk %}">
                                 <button type="submit" class="btn btn-link" data-mdb-ripple-color="dark">Детали</button>
@@ -50,7 +52,7 @@
                 {% endfor %}
             </tbody>
         </table>
-        <nav aria-label="Список записей">
+        <nav aria-label="Список записок">
             <ul class="pagination justify-content-center">
                 {% if page_obj.has_previous %}
                     <li class="page-item"><a class="page-link" href="?page=1">Первая</a></li>
@@ -70,7 +72,7 @@
             </ul>
         </nav>
 	{% else %}
-        <p>У вас нет записей</p>
+        <p>У Вас нет записок</p>
 	{% endif %}
     <br>
 </div>

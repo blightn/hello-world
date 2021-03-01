@@ -66,8 +66,10 @@
     <br>
 </div>
 <div align="center">
-    <button class="btn btn-primary" type="submit" formaction="{% url 'firstapp:list' %}">Назад</button>
-    <button class="btn btn-primary" type="submit" formaction="{% url 'firstapp:edit' pk=context.pk %}">Изменить</button>
-    <button class="btn btn-primary" type="submit" formaction="{% url 'firstapp:delete' pk=context.pk %}">Удалить</button>
+    <form>
+        <button class="btn btn-primary" type="submit" formaction="{% url 'firstapp:list' %}">Назад</button>
+        <button class="btn btn-primary" type="submit" formaction="{% url 'firstapp:edit' pk=context.pk %}">Изменить</button>
+        <button class="btn btn-primary" type="submit" formaction="{% url 'firstapp:delete' pk=context.pk %}">Удалить</button>
+    </form>
 </div>
 {% endblock %}

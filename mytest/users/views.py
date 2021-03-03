@@ -10,12 +10,13 @@ from django.utils.encoding import force_bytes, force_text
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.template.loader import render_to_string
 from django.contrib.auth.models import User
+from django.contrib import messages
 
 from .forms import UserRegistrationForm
 from mytest.tokens import account_activation_token
 
 
-def register(request):
+def register(request):   
     if request.method == 'POST':
         form = UserRegistrationForm(request.POST)
         if form.is_valid():
@@ -32,8 +33,11 @@ def register(request):
                 'token': account_activation_token.make_token(user),
             })
             user.email_user(subject, message)
+            messages.success(request, 'Вы успешно зарегистрированы')
 
             return redirect(reverse_lazy('users:account_activation_sent'))
+        else:
+            messages.error(request, 'Проверьте корректность заполненных полей')
     else:
         form = UserRegistrationForm()
         

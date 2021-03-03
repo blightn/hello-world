@@ -13,11 +13,11 @@
         <div class="mb-3">
             <label class="form-label">{{ form.title.label }}:</label>
             <input class="form-control form-control-lg mb-2" id="id_{{ form.title.name }}" name="{{ form.title.name }}" type="text" placeholder="{{ form.title.label }}"
-                required="required" maxlength="30" {% if form.title.value %} value="{{ form.title.value }}" {% endif %}>
+                required="required" maxlength="{{ form.title.field.max_length }}"{% if form.title.value %}value="{{ form.title.value }}"{% endif %}>
 
             <label class="form-label">{{ form.text.label }}:</label>
             <textarea class="form-control" id="id_{{ form.text.name }}" name="{{ form.text.name }}" rows="5" placeholder="{{ form.text.label }}"
-                required="required" maxlength="250">{% if form.text.value %}{{ form.text.value }}{% endif %}</textarea>
+                required="required" maxlength="{{ form.text.field.max_length }}">{% if form.text.value %}{{ form.text.value }}{% endif %}</textarea>
         </div>
         <div class="submit-row">
             <button class="btn btn-primary" type="submit">{{ action }}</button>

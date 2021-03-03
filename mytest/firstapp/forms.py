@@ -1,5 +1,6 @@
-from .models import Note
 from django import forms
+
+from .models import Note
 
 class FirstAppForm(forms.ModelForm):
     # Форма создания/изменения записки

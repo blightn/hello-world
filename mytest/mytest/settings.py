@@ -139,7 +139,8 @@ AUTH_PASSWORD_VALIDATORS = [
 #LANGUAGE_CODE = 'en-us'
 LANGUAGE_CODE = 'ru-ru'
 
-TIME_ZONE = 'UTC'
+#TIME_ZONE = 'UTC'
+TIME_ZONE = 'Europe/Moscow'
 
 USE_I18N = True
 
@@ -156,8 +157,9 @@ STATICFILES_DIRS = [
     BASE_DIR / 'static'
 ]
 
+LOGIN_URL = 'users:login'
 # Redirect to home URL after login (Default redirects to /accounts/profile/)
-LOGIN_REDIRECT_URL =  '/list/'
+LOGIN_REDIRECT_URL =  'firstapp:list'
 
 # Для "python -m smtpd -n -c DebuggingServer localhost:1025" (venv):
 EMAIL_HOST = "localhost"

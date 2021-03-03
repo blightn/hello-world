@@ -12,40 +12,53 @@
     </div>
     <br>
 	{% if context %}
-        <table class="table table-hover">
+        <table class="table table-hover align-middle">
             <thead>
                 <tr>
                     <th scope="col">#</th>
                     <th scope="col">Заголовок</th>
-                    <th scope="col">Описание</th>
+                    <th scope="col">Текст</th>
                     <th scope="col">Дата создания</th>
                     <th scope="col">Дата изменения</th>
-                    <th scope="col"></th>
-                    <th scope="col"></th>
                     <th scope="col"></th>
                 </tr>
             </thead>
             <tbody>
                 {% for row in context %}
                     <tr>
-                        <th scope="row">{{row.id}}</th>
+                        <th scope="row">{{forloop.counter}}</th>
                         <td>{{row.title|truncatechars:20}}</td>
                         <td>{{row.text|truncatechars:35}}</td>
                         <td>{{row.creation_date}}</td>
                         <td>{{row.modify_date}}</td>
+                        <!--
                         <td>
                             <form action="{% url 'firstapp:details' pk=row.pk %}">
-                                <button type="submit" class="btn btn-link" data-mdb-ripple-color="dark">Детали</button>
+                                <button type="submit" class="btn btn-link">Детали</button>
                             </form>
                         </td>
                         <td>
                             <form action="{% url 'firstapp:edit' pk=row.pk %}">
-                                <button type="submit" class="btn btn-link" data-mdb-ripple-color="dark">Изменить</button>
+                                <button type="submit" class="btn btn-link">Изменить</button>
                             </form>
                         </td>
                         <td>
                             <form action="{% url 'firstapp:delete' pk=row.pk %}">
-                                <button type="submit" class="btn btn-link" data-mdb-ripple-color="dark">Удалить</button>
+                                <button type="submit" class="btn btn-link">Удалить</button>
+                            </form>
+                        </td>
+                        -->
+                        <td>
+                            <form>
+                                <button class="btn btn-default" type="submit" formaction="{% url 'firstapp:details' pk=row.pk %}">
+                                    <span class="bi-eye"></span>
+                                </button>
+                                <button class="btn btn-default" type="submit" formaction="{% url 'firstapp:edit' pk=row.pk %}">
+                                    <span class="bi-pen"></span>
+                                </button>
+                                <button class="btn btn-default" type="submit" formaction="{% url 'firstapp:delete' pk=row.pk %}">
+                                    <span class="bi-x"></span>
+                                </button>
                             </form>
                         </td>
                     </tr>
@@ -61,7 +74,8 @@
                     <li class="page-item disabled"><a class="page-link" href="#">Первая</a></li>
                     <li class="page-item disabled"><a class="page-link" href="#">&laquo;</a></li>
                 {% endif %}
-                <li class="page-item"><a class="page-link" href="?page={{ page_obj.number }}">{{ page_obj.number }}</a></li>
+                <!--<li class="page-item"><a class="page-link" href="?page={{ page_obj.number }}">{{ page_obj.number }}</a></li>-->
+                <li class="page-item"><a class="page-link">{{ page_obj.number }}</a></li>
                 {% if page_obj.has_next %}
                     <li class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number }}">&raquo;</a></li>
                     <li class="page-item"><a class="page-link" href="?page={{ page_obj.paginator.num_pages }}">Последняя</a></li>

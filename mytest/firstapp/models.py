@@ -14,5 +14,8 @@ class Note(models.Model):
     creation_date = models.DateTimeField('Дата создания', auto_now_add=True)
     modify_date = models.DateTimeField('Дата изменения', auto_now=True)
 
+    class Meta:
+        ordering = ['creation_date']
+
     def __str__(self):
         return self.title

@@ -2,19 +2,16 @@ from django.shortcuts import render
 
 # Create your views here.
 
-from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from django.views.generic import ListView, DetailView
+from django.views.generic import CreateView, ListView, DetailView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import redirect
+
 from .models import Note
 from .forms import FirstAppForm
 
 
-class CustomLoginRequiredMixin(LoginRequiredMixin):
-    login_url = '/login/'
-
-class FirstAppCreateView(CustomLoginRequiredMixin, CreateView):
+class FirstAppCreateView(LoginRequiredMixin, CreateView):
     # Создание записки
 
     model = Note
@@ -35,7 +32,7 @@ class FirstAppCreateView(CustomLoginRequiredMixin, CreateView):
         context['action'] = 'Добавить записку'
         return context
 
-class FirstAppListView(CustomLoginRequiredMixin, ListView):
+class FirstAppListView(LoginRequiredMixin, ListView):
     # Просмотр записок
 
     model = Note
@@ -47,7 +44,7 @@ class FirstAppListView(CustomLoginRequiredMixin, ListView):
         self.object = Note.objects.filter(author=self.request.user)
         return self.object
 
-class FirstAppDetailView(CustomLoginRequiredMixin, DetailView):
+class FirstAppDetailView(LoginRequiredMixin, DetailView):
     # Просмотр деталей записки
 
     model = Note
@@ -56,7 +53,7 @@ class FirstAppDetailView(CustomLoginRequiredMixin, DetailView):
     form_class = FirstAppForm
     #fields = '__all__'
 
-class FirstAppUpdateView(CustomLoginRequiredMixin, UpdateView):
+class FirstAppUpdateView(LoginRequiredMixin, UpdateView):
     # Изменение записки
 
     model = Note
@@ -71,7 +68,7 @@ class FirstAppUpdateView(CustomLoginRequiredMixin, UpdateView):
         context['action'] = 'Изменить записку'
         return context
 
-class FirstAppDeleteView(CustomLoginRequiredMixin, DeleteView):
+class FirstAppDeleteView(LoginRequiredMixin, DeleteView):
     # Удаление записки
 
     model = Note

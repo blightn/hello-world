@@ -12,6 +12,7 @@
     <title>{% block title %}Приложение{% endblock %}</title>
   </head>
   <body>
+    {% include 'navbar.html' %}
     {% include 'messages.html' %}
 
     {% block main_data %}
